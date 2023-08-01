@@ -1,0 +1,29 @@
+class treenode:
+    def __init__(self,data,children=[]):
+        self.data=data
+        self.children=children
+    
+    def __str__(self,level=0):
+        ret='  '*level+str(self.data)+'\n'
+        for child in self.children:
+            ret+=child.__str__(level+1)
+        return ret 
+        
+    def addchild(self,treenode):
+        self.children.append(treenode)
+
+tree=treenode('Drinks',[])
+hot=treenode('hot',[])
+cold=treenode('cold',[])
+tree.addchild(cold)
+tree.addchild(hot)
+cola=treenode('cola',[])
+fanta=treenode('fanta',[])
+tea =treenode('tea',[])
+coffee=treenode('coffee',[])
+cold.addchild(cola)
+cold.addchild(fanta)
+hot.addchild(tea)
+hot.addchild(coffee)
+print(tree)
+
