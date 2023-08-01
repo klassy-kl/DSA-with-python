@@ -1,0 +1,42 @@
+class treenode:
+    def __init__(self,data):
+        self.data=data
+        self.leftchild=None
+        self.rightchild=None
+        
+newbt=treenode('drinks')        
+leftchild=treenode('hot')
+rightchild=treenode('cold')
+newbt.leftchild=leftchild
+newbt.rightchild=rightchild
+
+def preordertraversal(rootnode):
+    if not rootnode:
+        return
+    print(rootnode.data)
+    preordertraversal(rootnode.leftchild)
+    preordertraversal(rootnode.rightchild)
+ 
+
+def inordertraversal(rootnode):
+    if not rootnode:
+        return
+    inordertraversal(rootnode.leftchild)
+    print(rootnode.data)
+    inordertraversal(rootnode.rightchild)
+    
+    
+def postordertraversal(rootnode):
+    if not rootnode:
+        return
+    postordertraversal(rootnode.leftchild)
+    postordertraversal(rootnode.rightchild)
+    print(rootnode.data)
+    
+preordertraversal(newbt) 
+print('\n')
+inordertraversal(newbt)
+print('\n')
+postordertraversal(newbt)
+
+    
