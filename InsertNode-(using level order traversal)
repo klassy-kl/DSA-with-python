@@ -10,21 +10,7 @@ leftchild=treenode('hot')
 rightchild=treenode('cold')
 newbt.leftchild=leftchild
 newbt.rightchild=rightchild
-
-import queue
-class treenode:
-    def __init__(self,data):
-        self.data=data
-        self.leftchild=None
-        self.rightchild=None
-        
-newbt=treenode('drinks')        
-leftchild=treenode('hot')
-rightchild=treenode('cold')
-newbt.leftchild=leftchild
-newbt.rightchild=rightchild
                 
-
 def InsertNode(rootnode,newnode):
     if not rootnode:
         rootnode=newnode
