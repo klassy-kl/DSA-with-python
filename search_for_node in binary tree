@@ -1,0 +1,30 @@
+import queue
+class treenode:
+    def __init__(self,data):
+        self.data=data
+        self.leftchild=None
+        self.rightchild=None
+        
+newbt=treenode('drinks')        
+leftchild=treenode('hot')
+rightchild=treenode('cold')
+newbt.leftchild=leftchild
+newbt.rightchild=rightchild
+
+def SearchForNode(rootnode,value):
+    if not rootnode:
+        return
+    else:
+        cq=queue.Queue()
+        cq.put(rootnode)
+        while not cq.empty():
+            root=cq.get()
+            if root.data==value:
+                return 'element found'
+            if root.leftchild is not None:
+                cq.put(root.leftchild)
+            if root.rightchild is not None:
+                cq.put(root.rightchild)
+        return 'element not found'        
+                
+print(SearchForNode(newbt,'coffee'))   
