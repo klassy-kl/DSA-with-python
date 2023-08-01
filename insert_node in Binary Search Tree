@@ -1,0 +1,33 @@
+class bstnode:
+    def __init__(self,data):
+        self.data=data
+        self.leftchild=None
+        self.rightchild=None
+
+def InsertNode(rootnode,nodevalue):
+    if not rootnode.data:
+        rootnode.data=nodevalue
+    elif nodevalue<=rootnode.data:
+        if rootnode.leftchild is None:
+            rootnode.leftchild=bstnode(nodevalue)
+        else:
+            InsertNode(rootnode.leftchild,nodevalue)
+    else:
+        if rootnode.rightchild is None:
+            rootnode.rightchild=bstnode(nodevalue)
+        else:
+            InsertNode(rootnode.rightchild,nodevalue)
+
+
+    return "node inserted successfully"  
+newbst=bstnode(None) 
+InsertNode(newbst,70)
+InsertNode(newbst,60)
+InsertNode(newbst,80)
+print("rootnode is:",newbst.data)
+print("rootnode.leftchild:",newbst.leftchild.data)
+print("rootnode.rightchild:",newbst.rightchild.data)
+
+
+
+
