@@ -1,0 +1,25 @@
+class trienode:
+    def __init__(self):
+        self.children={}
+        self.endofstring=False
+        
+class Trie:
+    def __init__(self):
+        self.root=trienode()
+     
+    def insert(self,word):
+        current=self.root
+        for char in word:
+            if char not in current.children:
+                current.children[char]=trienode()
+        current=current.children[char]
+        current.endofstring=True
+        print('successfully inserted')
+        print(word)
+        
+    
+    
+trie=Trie()
+trie.insert('apple')
+trie.insert('banana')
+trie.insert('orange')
