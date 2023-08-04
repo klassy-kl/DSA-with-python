@@ -1,0 +1,40 @@
+import math
+
+def insertionsort(arr):
+    for i in range(len(arr)):
+        key=arr[i]
+        j=i-1
+        while j>=0 and key<arr[j]:
+            arr[j+1]=arr[j]
+            j=j-1
+        arr[j+1]=key
+
+
+
+
+def bucketsort(arr):
+    number_of_buckets=round(math.sqrt(len(arr)))
+    max_value=max(arr)
+    buckets=[]
+    
+    for i in range(number_of_buckets):
+        buckets.append([])
+        
+    for j in arr:
+        index_b=math.ceil(j*number_of_buckets/max_value)
+        buckets[index_b-1].append(j)
+
+    
+    
+    for i in range(number_of_buckets):
+        insertionsort(buckets[i])
+        
+    k=0
+    for i in range(number_of_buckets):
+        for j in range(len(buckets[i])):
+            arr[k]=buckets[i][j]
+            k+=1 
+    return arr
+    
+arr = [64, 34, 25, 12, 22, 11, 90]
+print(bucketsort(arr))
