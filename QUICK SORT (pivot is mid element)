@@ -1,0 +1,12 @@
+def quicksort(arr):
+    if len(arr)<=1:
+        return arr 
+    pivot=arr[len(arr)//2]
+    left=[x for x in arr if x<pivot]
+    equal=[x for x in arr if x==pivot]
+    right=[x for x in arr if x>pivot]
+    
+    return quicksort(left)+equal+quicksort(right)
+    
+arr=[5,3,8,2,1,4,6,9,10,7]
+print(quicksort(arr))
