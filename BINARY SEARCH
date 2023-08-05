@@ -1,0 +1,25 @@
+def BinarySearch(arr,value):
+    left=0 
+    right=len(arr)-1
+    while left<=right:
+        mid=(left+right)//2
+        
+        if arr[mid]==value:
+            return mid
+        elif arr[mid]<value:
+            left=mid+1
+        else:
+            right=mid-1
+            
+    return '-1'
+    
+arr = [2, 4, 6, 8, 10, 12, 14, 16]
+value = 10
+index = BinarySearch(arr, value)
+
+if index != -1:
+    print(f"Element {value} found at index {index}.")
+else:
+    print(f"Element {value} not found in the list.")
+
+    
