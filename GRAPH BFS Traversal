@@ -1,0 +1,24 @@
+from collections import deque
+def bfs(cusomdict,vertex):
+    visited=set()
+    visited.add(vertex)
+    queue=[vertex]
+    while queue:
+        current_vertex=queue.pop(0)
+        print(current_vertex)
+        for adjacent_vertex in cusomdict[current_vertex]:
+            if adjacent_vertex not in visited:
+                visited.add(adjacent_vertex)
+                queue.append(adjacent_vertex)
+        
+cusomdict={
+    'a':['b','c'],
+    'b':['a','e'],
+    'c':['a','d'],
+    'd':['c','e'],
+    'e':['b','d'] 
+}   
+
+bfs(cusomdict,'a')
+
+    
