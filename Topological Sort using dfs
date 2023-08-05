@@ -1,0 +1,32 @@
+from collections import defaultdict
+
+def topological_sort(graph):
+    def dfs(vertex):
+        visited.add(vertex)
+        for neighbor in graph[vertex]:
+            if neighbor not in visited:
+                dfs(neighbor)
+        stack.append(vertex)
+
+    visited = set()
+    stack = []
+
+    for vertex in graph:
+        if vertex not in visited:
+            dfs(vertex)
+
+    return stack[::-1]
+
+graph = {
+    'a': ['c'],
+    'b': ['c', 'd'],
+    'c': ['e'],
+    'd': ['f'],
+    'e': ['h','f'],
+    'f': ['g'],
+    'g': [], 
+    'h': [],
+}
+
+sorted_vertices = topological_sort(graph)
+print(sorted_vertices)
