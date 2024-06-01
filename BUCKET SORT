@@ -1,40 +1,39 @@
 import math
-
 def insertionsort(arr):
-    for i in range(len(arr)):
-        key=arr[i]
-        j=i-1
+    n=len(arr)
+    for i in range(1,n):
+        key=arr[i]    #
+        j=i-1         #previous element before key
         while j>=0 and key<arr[j]:
             arr[j+1]=arr[j]
-            j=j-1
+            j-=1 
         arr[j+1]=key
-
-
-
+        
+    
+arr=[2,3,6,1,4,8,9,5,7]        
 
 def bucketsort(arr):
-    number_of_buckets=round(math.sqrt(len(arr)))
-    max_value=max(arr)
-    buckets=[]
-    
-    for i in range(number_of_buckets):
-        buckets.append([])
-        
-    for j in arr:
-        index_b=math.ceil(j*number_of_buckets/max_value)
-        buckets[index_b-1].append(j)
+    if len(arr) == 0:
+        return arr
 
-    
-    
-    for i in range(number_of_buckets):
-        insertionsort(buckets[i])
+    number_of_buckets = round(math.sqrt(len(arr)))
+    max_value = max(arr)
+
+    # Initialize buckets
+    buckets = [[] for _ in range(number_of_buckets)]
         
-    k=0
-    for i in range(number_of_buckets):
-        for j in range(len(buckets[i])):
-            arr[k]=buckets[i][j]
-            k+=1 
-    return arr
+    for num in arr:
+        index = math.ceil((num) * (number_of_buckets ) / max_value)
+        buckets[index-1].append(num)
     
-arr = [64, 34, 25, 12, 22, 11, 90]
+    # Sort each bucket and concatenate the result
+    sorted_array = []
+    for bucket in buckets:
+        insertionsort(bucket)
+        sorted_array.extend(bucket)
+    
+    return sorted_array
+
+arr = [2, 3, 6, 1, 4, 8, 9, 5, 7]
 print(bucketsort(arr))
+
